@@ -1,0 +1,116 @@
+# Define colors
+red = "\033[31m"
+green = "\033[32m"
+yellow = "\033[33m"
+blue = "\033[34m"
+orange = "\033[35m"
+reset = "\033[0m"  # Reset color
+
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        """Add an item to the stack."""
+        self.items.append(item)
+
+    def pop(self):
+        """Remove and return the top item from the stack."""
+        if not self.is_empty():
+            return self.items.pop()
+        return None
+
+    def peek(self):
+        """Return the top item without removing it."""
+        if not self.is_empty():
+            return self.items[-1]
+        return None
+
+    def is_empty(self):
+        """Check if the stack is empty."""
+        return len(self.items) == 0
+
+    def size(self):
+        """Return the size of the stack."""
+        return len(self.items)
+
+    def display(self):
+        """Display the stack."""
+        print("Stack (bottom to top):")
+        for item in self.items:
+            print(item + reset)
+        print()  # Add a blank line for readability
+
+
+def display_toy_with_blocks(stack):
+    """Display the stacking toy with colored blocks representing the rings."""
+    print("Stacking Toy (bottom to top):")
+    for item in stack.items:
+        print(item)
+    print()  # Add a blank line for better readability
+
+
+
+# Predefined ring blocks
+rings = {
+    "red": f"""{red}         
+ _______________________
+|         Red           |
+|_______________________| 
+{reset}""",
+    "orange": f"""{orange}         
+ _______________________
+|       Orange          |
+|_______________________| 
+{reset}""",
+    "yellow": f"""{yellow}         
+ _______________________
+|       Yellow          |
+|_______________________| 
+{reset}""",
+    "green": f"""{green}         
+ _______________________
+|        Green          |
+|_______________________| 
+{reset}""",
+    "blue": f"""{blue}         
+ _______________________
+|        Blue           |
+|_______________________| 
+{reset}"""
+}
+
+# Create a stacking toy
+stacking_toy = Stack()
+
+# Interactive loop
+while True:
+    print("\nOptions:")
+    print("1. Add a ring (red, orange, yellow, green, blue)")
+    print("2. Remove the top ring")
+    print("3. Display the stacking toy")
+    print("4. Exit")
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        color = input("Enter the color of the ring to add (red, orange, yellow, green, blue): ").lower()
+        if color in rings:
+            stacking_toy.push(rings[color])
+            print(f"{color.capitalize()} ring added!")
+        else:
+            print("Invalid color. Please choose from red, orange, yellow, green, or blue.")
+    elif choice == "2":
+        if not stacking_toy.is_empty():
+            removed_ring = stacking_toy.pop()
+            print("Removed the top ring:")
+            print(removed_ring)
+        else:
+            print("The stack is empty. No ring to remove.")
+    elif choice == "3":
+        print("\nCurrent stacking toy:")
+        display_toy_with_blocks(stacking_toy)
+    elif choice == "4":
+        print("Exiting. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
