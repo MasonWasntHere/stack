@@ -29,10 +29,10 @@ class Stack:
 
     def display(self):
         """Display the stack."""
-        print("Stacking Toy (bottom to top):")
-        for item in self.items:
+        print("Stacking Toy (top to bottom):")
+        for item in reversed(self.items):  # Reverse the order of items
             print(item)
-        print()  # white space
+        print()  # Add a blank line for readability
 
 
 # defines the rings with colors
