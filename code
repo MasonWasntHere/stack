@@ -19,7 +19,7 @@ class Stack:
 
     def pop(self):
         """Remove and return the top item from the stack."""
-        if not self.is_empty():
+        if not self.is_empty(): # check if the stack is not empty
             return self.items.pop()
         return None
 
@@ -30,9 +30,9 @@ class Stack:
     def display(self):
         """Display the stack."""
         print("Stacking Toy (top to bottom):")
-        for item in reversed(self.items):  # Reverse the order of items
+        for item in reversed(self.items):  # reverses the order of items
             print(item)
-        print()  # Add a blank line for readability
+        print()  # adds a blank line for readability
 
 
 # defines the rings with colors
