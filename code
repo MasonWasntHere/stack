@@ -10,6 +10,7 @@ class Stack:
     def __init__(self):
         self.items = []
 
+    # adds ring
     def push(self, item):
         """Add an item to the stack if it doesn't already exist."""
         if item in self.items:
@@ -17,7 +18,8 @@ class Stack:
         else:
             self.items.append(item)
 
-    def pop(self):
+    # removes top ring
+    def pop(self): 
         """Remove and return the top item from the stack."""
         if not self.is_empty(): # check if the stack is not empty
             return self.items.pop()
